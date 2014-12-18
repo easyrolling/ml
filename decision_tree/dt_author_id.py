@@ -22,12 +22,26 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-
+print 'number of features', len(features_train[0])
 
 #########################################################
 ### your code goes here ###
+from sklearn import tree
+from sklearn.metrics import accuracy_score
+
+cls = tree.DecisionTreeClassifier(min_samples_split=40)
+
+t0 = time()
+cls.fit(features_train, labels_train)
+print 'training time', round(time()-t0,3), 's'
 
 
+t0 = time()
+pred = cls.predict(features_test)
+print 'predict time', round(time()-t0,3), 's'
+
+acc = accuracy_score(labels_test, pred)
+print 'accuracy', acc
 #########################################################
 
 
