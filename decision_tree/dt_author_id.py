@@ -12,7 +12,7 @@
     
 import sys
 from time import time
-sys.path.append("../tools/")
+sys.path.append("tools/")
 from email_preprocess import preprocess
 
 
